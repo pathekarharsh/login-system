@@ -31,7 +31,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-form">
-      <label>
+      <label className='option'>
         User Type:
         <select value={userType} onChange={(e) => setUserType(e.target.value)}>
           <option value="">Select User Type</option>
