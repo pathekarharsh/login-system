@@ -15,9 +15,10 @@ const LoginForm = () => {
 
     // navigate
     switch (userType) {
-      case 'customer':
+      /*case 'customer':
         window.location.href = 'https://customfr-b38b.onrender.com/';
         break;
+        */
       case 'inventoryManager':
         window.location.href = 'https://delivpar-0rgf.onrender.com';
         break;
