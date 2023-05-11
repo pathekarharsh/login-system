@@ -36,13 +36,13 @@ const LoginForm = () => {
         User Type:
         <select value={userType} onChange={(e) => setUserType(e.target.value)}>
           <option value="">Select User Type</option>
-          <option value="customer">Customer</option>
+          {/*<option value="customer">Customer</option>*/}
           <option value="inventoryManager">Inventory Manager</option>
           <option value="deliveryAgent">Delivery Agent</option>
         </select>
       </label>
 
-      {userType === 'customer' && (
+      {/*{userType === 'customer' && (
         <div className='credentials'>
           <label>
             User Name:
@@ -57,7 +57,7 @@ const LoginForm = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
         </div>
-      )}
+      )}*/}
 
       {userType === 'inventoryManager' && (
         <div className='credentials'>
