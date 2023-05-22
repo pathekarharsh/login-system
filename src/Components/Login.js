@@ -32,10 +32,10 @@ const LoginForm = () => {
         break;
         */
       case 'inventoryManager':
-        window.location.href = 'https://delivpar-0rgf.onrender.com';
+        window.location.href = 'https://invman-e88l.onrender.com';
         break;
       case 'deliveryAgent':
-         window.location.href = 'https://invman-e88l.onrender.com';
+         window.location.href = 'https://delivpar-0rgf.onrender.com';
         break;
       default:
         break;
@@ -44,6 +44,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-form">
+      <div className='head'><h2>LOGIN</h2></div>
       <label className='option'>
         User Type:
         <select value={userType} onChange={(e) => setUserType(e.target.value)}>
