@@ -11,20 +11,8 @@ const LoginForm = () => {
   const [companyName, setCompanyName] = useState('');
 
   const handleLogin = () => {
-    if (userType === '') {
-      alert('Please select a user type.');
-      return;
-    }
     //based on userType and input fields
-    if (userType === 'inventoryManager' && (email === '' || password === '')) {
-      alert('Please fill in all the required fields.');
-      return;
-    }
-  
-    if (userType === 'deliveryAgent' && (companyName === '' || email === '' || password === '')) {
-      alert('Please fill in all the required fields.');
-      return;
-    }
+
     // navigate
     switch (userType) {
       /*case 'customer':
