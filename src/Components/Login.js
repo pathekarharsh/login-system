@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./Login.css"
+import axios from 'axios';
+import "./Login.css";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -10,23 +11,38 @@ const LoginForm = () => {
   const [name, setName] = useState('');
   const [companyName, setCompanyName] = useState('');
 
-  const handleLogin = () => {
-    //based on userType and input fields
-
-    // navigate
-    switch (userType) {
-      /*case 'customer':
-        window.location.href = 'https://customfr-b38b.onrender.com/';
-        break;
-        */
-      case 'inventoryManager':
-        window.location.href = 'https://invman-e88l.onrender.com';
-        break;
-      case 'deliveryAgent':
-         window.location.href = 'https://delivpar-0rgf.onrender.com';
-        break;
-      default:
-        break;
+  const handleLogin = async () => {
+    try {
+      let apiUrl = '';
+      let navigateUrl = '';
+      
+      switch (userType) {
+        case 'inventoryManager':
+          apiUrl = 'https://adminz.onrender.com/api/invman/';
+          navigateUrl = 'https://invman-e88l.onrender.com';
+          break;
+        case 'deliveryAgent':
+          apiUrl = 'https://adminz.onrender.com/api/delivpar/';
+          navigateUrl = 'https://delivpar-0rgf.onrender.com';
+          break;
+        default:
+          return;
+      }
+      
+      const response = await axios.post(apiUrl, { /*email,*/ password });
+      const { success } = response.data;
+      
+      if (success) {
+        // Credentials are valid, navigate to the appropriate URL
+        window.location.href = navigateUrl;
+      } else {
+        // Credentials are invalid, handle error (e.g., display an error message)
+        console.log('Invalid credentials');
+      }
+    } catch (error) {
+      // Handle API call error (e.g., display an error message)
+      console.log('An error occurred during API call');
+      console.error(error);
     }
   };
 
@@ -37,28 +53,10 @@ const LoginForm = () => {
         User Type:
         <select value={userType} onChange={(e) => setUserType(e.target.value)}>
           <option value="">Select User Type</option>
-          {/*<option value="customer">Customer</option>*/}
           <option value="inventoryManager">Inventory Manager</option>
           <option value="deliveryAgent">Delivery Agent</option>
         </select>
       </label>
-
-      {/*{userType === 'customer' && (
-        <div className='credentials'>
-          <label>
-            User Name:
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-          </label>
-          <label>
-            Email:
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          </label>
-          <label>
-            Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </label>
-        </div>
-      )}*/}
 
       {userType === 'inventoryManager' && (
         <div className='credentials'>
