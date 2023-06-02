@@ -74,10 +74,6 @@ const LoginForm = () => {
       {userType === 'deliveryAgent' && (
         <div className='credentials'>
           <label>
-            Company Name:
-            <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
-          </label>
-          <label>
             Email:
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </label>
