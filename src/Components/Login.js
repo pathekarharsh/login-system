@@ -15,7 +15,7 @@ const LoginForm = () => {
     try {
       let apiUrl = '';
       let navigateUrl = '';
-      
+  
       switch (userType) {
         case 'inventoryManager':
           apiUrl = 'https://adminz.onrender.com/api/invman/';
@@ -28,19 +28,24 @@ const LoginForm = () => {
         default:
           return;
       }
-      
-      const response = await axios.post(apiUrl, { /*email,*/ password });
-      const { success } = response.data;
-      
+  
+      const response = await axios.post(apiUrl);
+      const { success, email } = response.data;
+  
       if (success) {
-        // Credentials are valid, navigate to the appropriate URL
+        //email from API
+        setEmail(email);
+
+        //default password
+        setPassword('test1234');
+  
+        // Navigate to the appropriate URL
         window.location.href = navigateUrl;
       } else {
-        // Credentials are invalid, handle error (e.g., display an error message)
+        // Credentials are invalid
         console.log('Invalid credentials');
       }
     } catch (error) {
-      // Handle API call error (e.g., display an error message)
       console.log('An error occurred during API call');
       console.error(error);
     }
