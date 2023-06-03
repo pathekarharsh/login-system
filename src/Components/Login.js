@@ -18,38 +18,34 @@ const LoginForm = () => {
   
       switch (userType) {
         case 'inventoryManager':
-          apiUrl = 'https://adminz.onrender.com/api/invman/';
-          navigateUrl = 'https://invman-e88l.onrender.com';
+          apiUrl = 'https://adminlm.onrender.com/api/invman/';
+          navigateUrl = 'https://invmans.onrender.com';
           break;
         case 'deliveryAgent':
-          apiUrl = 'https://adminz.onrender.com/api/delivpar/';
-          navigateUrl = 'https://delivpar-0rgf.onrender.com';
+          apiUrl = 'https://adminlm.onrender.com/api/delivpar/';
+          navigateUrl = 'https://delivpartm.onrender.com';
           break;
         default:
           return;
       }
   
-      const response = await axios.post(apiUrl);
-      const { success, email } = response.data;
+      const response = await axios.get(apiUrl);
+      const userData = response.data;
+      const foundUser = userData[0]; // Get the first user object
   
-      if (success) {
-        //email from API
-        setEmail(email);
-
-        //default password
-        setPassword('test1234');
-  
+      if (foundUser.email === email && password === 'test1234') {
         // Navigate to the appropriate URL
         window.location.href = navigateUrl;
       } else {
         // Credentials are invalid
-        console.log('Invalid credentials');
+        alert('Invalid credentials');
       }
     } catch (error) {
       console.log('An error occurred during API call');
       console.error(error);
     }
   };
+  
 
   return (
     <div className="login-form">
