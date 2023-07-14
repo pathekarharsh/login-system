@@ -19,11 +19,11 @@ const LoginForm = () => {
       switch (userType) {
         case 'inventoryManager':
           apiUrl = 'https://adminpr.onrender.com/api/invman/';
-          navigateUrl = 'https://invmans.onrender.com';
+          navigateUrl = 'https://inv-manags.onrender.com/';
           break;
         case 'deliveryAgent':
           apiUrl = 'https://adminpr.onrender.com/api/delivpar/';
-          navigateUrl = 'https://delivpartm.onrender.com';
+          navigateUrl = 'https://deliv-partn.onrender.com';
           break;
         default:
           return;
